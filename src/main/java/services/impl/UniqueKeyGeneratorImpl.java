@@ -7,14 +7,18 @@ import java.math.BigInteger;
 
 public class UniqueKeyGeneratorImpl implements UniqueKeyGenerator {
 
-    private BigInteger counter = BigInteger.ZERO;
+    private BigInteger counter;
+
+    public UniqueKeyGeneratorImpl() {
+        this.counter = BigInteger.ZERO;
+    }
 
     /**
-     *
+     * Generates Unique key
      * @return unique Base62 String
      */
     @Override
-    public String getNewKey() {
+    public String generateUniqueKey() {
         BigInteger value = getBigInteger();
         return Base62.encode(value);
     }

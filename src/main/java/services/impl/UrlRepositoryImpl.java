@@ -5,12 +5,21 @@ import core.UrlInfo;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Acts as a persistent layer for the application for keeping Actual Urls & Short Urls
+ */
 public class UrlRepositoryImpl implements UrlRepository {
 
     private Map<String, UrlInfo> urlInfoMap = new ConcurrentHashMap<>();
     private Map<String, String> clientUrlToShortUrlMap = new ConcurrentHashMap<>();
     private static String delimiter = ":";
 
+    /**
+     *
+     * @param urlInfo
+     * @return saved URL
+     * @throws Exception
+     */
     @Override
     public String saveUrl(UrlInfo urlInfo) throws Exception {
         UrlInfo previousShortUrlMapping = urlInfoMap.putIfAbsent(urlInfo.getShortUrl(), urlInfo);
