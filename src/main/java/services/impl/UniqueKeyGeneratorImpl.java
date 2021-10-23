@@ -20,7 +20,7 @@ public class UniqueKeyGeneratorImpl implements UniqueKeyGenerator {
     }
 
     /**
-     *
+     * synchronized method to handle concurrent calls.
      * @return unique BigInteger
      */
     private synchronized BigInteger getBigInteger() {

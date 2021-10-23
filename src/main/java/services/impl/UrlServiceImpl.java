@@ -22,7 +22,7 @@ public class UrlServiceImpl implements UrlService {
         this.urlRepository = urlRepository;
     }
 
-    public String getShortenedUrl(String url, String clientId) throws ValidationException {
+    public String getShortenedUrl(String url, String clientId) throws Exception {
         if(url == null || url.isEmpty()){
             throw new ValidationException("url can not be empty");
         }
@@ -41,7 +41,7 @@ public class UrlServiceImpl implements UrlService {
             return key;
         }
         StringBuilder sb = new StringBuilder(key);
-        sb.append("-");
+        sb.append("0");
         for(int i = 1 ; i < configRepository.getKeyLength() - key.length(); i++){
             sb.append(StringHelper.getRandomChar());
         }
